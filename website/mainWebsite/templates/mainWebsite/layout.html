@@ -8,6 +8,12 @@
 <link href="{% static 'mainWebsite/styles.css' %}" rel="stylesheet" />
 
 
+{%if title %}
+  <title>{{title}}</title>
+{% else %}
+  <title>Website</title>
+{% endif %}
+
 </head>
 <body>
 
