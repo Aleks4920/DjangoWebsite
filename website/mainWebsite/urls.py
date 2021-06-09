@@ -10,4 +10,5 @@ urlpatterns = [
     path("account", views.Account, name="account"),
     path("yourscripts", views.YourScripts, name="yourscripts"),
     path("settings", views.Settings, name="settings"),
+    path("logout", views.Logout, name="logout"),
 ]

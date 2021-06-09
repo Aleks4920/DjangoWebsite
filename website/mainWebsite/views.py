@@ -27,8 +27,9 @@ def Buy(request):
 def Sell(request):
     return render(request, 'mainWebsite/sell.html', {'title': 'Sell'})
 
-def Login(request):
-    return render(request, 'mainWebsite/login.html', {'title': 'Login'})
+
+
+
 
 def Register(request):
     return render(request, 'mainWebsite/register.html', {'title': 'Register'})
@@ -43,3 +44,15 @@ def YourScripts(request):
 
 def Settings(request):
     return render(request, 'mainWebsite/settings.html', {'title': 'Settings'})
+
+
+
+#login
+def Login(request):
+    return render(request, 'mainWebsite/login.html', {'title': 'Login'})
+
+#logout
+@login_required
+def Logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("login"))
