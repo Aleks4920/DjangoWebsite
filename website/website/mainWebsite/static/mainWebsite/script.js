@@ -19,5 +19,11 @@
     $('#nav-toggle').on('click', function() {
       this.classList.toggle('active');
     });
+    $("#login-button").click(function(event){
+    		 event.preventDefault();
+
+    	 $('form').fadeOut(500);
+
+    });
   }); // end DOM ready
 })(jQuery); // end jQuery

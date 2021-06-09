@@ -23,7 +23,7 @@
     		 event.preventDefault();
 
     	 $('form').fadeOut(500);
-    	 
+
     });
   }); // end DOM ready
 })(jQuery); // end jQuery

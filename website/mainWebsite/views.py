@@ -29,8 +29,6 @@ def Sell(request):
 
 
 
-
-
 def Register(request):
     return render(request, 'mainWebsite/register.html', {'title': 'Register'})
 
