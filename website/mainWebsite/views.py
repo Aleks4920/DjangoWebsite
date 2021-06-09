@@ -8,11 +8,21 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
-def home(request):
-    return render(request, 'mainWebsite/layout.html', {'title': 'Main'})
+
+from .models import Post
+
+
+
+
+
 
 def Buy(request):
-    return render(request, 'mainWebsite/buy.html', {'title': 'Buy'})
+    context = {
+        'posts': Post.objects.all(),
+        'title': 'Buy',
+    }
+
+    return render(request, 'mainWebsite/buy.html',context)
 
 def Sell(request):
     return render(request, 'mainWebsite/sell.html', {'title': 'Sell'})
