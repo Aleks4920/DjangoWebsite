@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 
 from .models import Post
+from .models import User, Post, Profile
 
 
 
@@ -30,7 +31,33 @@ def Sell(request):
 
 
 def Register(request):
-    return render(request, 'mainWebsite/register.html', {'title': 'Register'})
+    if request.method == "POST":
+        username = request.POST["username"]
+        email = request.POST["email"]
+
+        # Ensure password matches confirmation
+        password = request.POST["password"]
+        confirmation = request.POST["confirmation"]
+        if password != confirmation:
+            return render(request, "mainWebsite/register.html", {
+                "message": "Passwords must match."
+            })
+
+        # Attempt to create new user
+        try:
+            user = User.objects.create_user(username, email, password)
+            user.save()
+        except IntegrityError:
+            return render(request, "mainWebsite/register.html", {
+                "message": "Username already taken."
+            })
+        login(request, user)
+        profile = Profile()
+        profile.user = user
+        profile.save()
+        return HttpResponseRedirect(reverse("buy"))
+    else:
+        return render(request, 'mainWebsite/register.html', {'title': 'Register'})
 
 
 def Account(request):
@@ -47,7 +74,23 @@ def Settings(request):
 
 #login
 def Login(request):
-    return render(request, 'mainWebsite/login.html', {'title': 'Login'})
+    if request.method == "POST":
+
+        # Attempt to sign user in
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        # Check if authentication successful
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("buy"))
+        else:
+            return render(request, "mainWebsite/login.html", {
+                "message": "Invalid username and/or password."
+            })
+    else:
+        return render(request, 'mainWebsite/login.html', {'title': 'Login'})
 
 #logout
 @login_required

@@ -5,14 +5,20 @@
 
 <div class="container">
   <h1>Welcome</h1>
+  {% if message %}
+       <div>{{ message }}</div>
+   {% endif %}
 
-  <form class="form">
-    <input type="text" placeholder="Username" >
-    <input type="email" placeholder="Email Address">
-    <input type="password" placeholder="Password">
-    <input type="password" placeholder="Re-Enter Password">
-    <button type="submit" id="login-button">Register</button>
+
+  <form class="form"  action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+    <input class="form-control" type="email" name="email" placeholder="Email Address">
+    <input class="form-control" type="password" name="password" placeholder="Password">
+    <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+    <button type="submit"  value="Register">Register</button>
   </form>
 </div>
 
 {% endblock %}
+<!--id="login-button"-->
