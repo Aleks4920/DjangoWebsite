@@ -31,12 +31,16 @@
         <li>
           <a href="{% url 'sell' %}">Sell</a>
         </li>
+        {% if not user.is_authenticated %}
         <li>
           <a href="{% url 'login' %}">Login</a>
         </li>
         <li>
           <a href="{% url 'register' %}">Register</a>
         </li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
         <li>
           <a id='dlink' href="#!">Acount</a>
           <ul class="nav-dropdown">
@@ -52,6 +56,7 @@
             </li>
           </ul>
         </li>
+        {% endif %}
 
       </ul>
     </nav>
