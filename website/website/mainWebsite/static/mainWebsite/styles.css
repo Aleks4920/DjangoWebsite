@@ -86,7 +86,7 @@ nav ul li ul li a {
   position: absolute;
   top: 0;
   right: 0;
-  background: #DBD2D8;
+  background: #262626;
   height: 70px;
   width: 70px;
 }
@@ -296,7 +296,8 @@ form {
   padding: 20px 0;
   position: relative;
   z-index: 2;
-
+  text-align: center;
+  justify-content: center;
 }
 form input {
   -webkit-appearance: none;
@@ -315,6 +316,7 @@ form input {
   color: black;
   transition-duration: 0.25s;
   font-weight: 300;
+  left: 50%;
 }
 form input:hover {
   background-color:white;
@@ -412,6 +414,9 @@ select.round:focus {
   outline: 0;
 }
 
-.file { text-align: center; position: relative; height: 30px; width: 100px; }
-.file > input[type="file"] { position: absoulte; opacity: 0; top: 0; left: 0; right: 0; bottom: 0 }
+.file { text-align: center; position: relative; height: 30px; width: 200px;  align-items: center; display: inline-block;
+vertical-align: middle; }
+
+.file > input[type="file"] {align-items: center; text-align: center; position: absoulte; opacity: 0; top: 0; left: 0; right: 0; bottom: 0; }
+
 .file > label { position: absolute; top: 0; right: 0; left: 0; bottom: 0; background-color: white; color: black; line-height: 30px; text-align: center; cursor: pointer; border-radius: 5px;}

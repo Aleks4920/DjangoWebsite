@@ -86,7 +86,7 @@ nav ul li ul li a {
   position: absolute;
   top: 0;
   right: 0;
-  background: #DBD2D8;
+  background: #262626;
   height: 70px;
   width: 70px;
 }
@@ -412,6 +412,10 @@ select.round:focus {
   outline: 0;
 }
 
-.file { text-align: center; position: relative; height: 30px; width: 100px; }
-.file > input[type="file"] { position: absoulte; opacity: 0; top: 0; left: 0; right: 0; bottom: 0 }
-.file > label { position: absolute; top: 0; right: 0; left: 0; bottom: 0; background-color: white; color: black; line-height: 30px; text-align: center; cursor: pointer; border-radius: 5px;}
+
+
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
