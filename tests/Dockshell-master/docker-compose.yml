@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+  dockshell:
+    build: .  # Replace with mythicmaniac/dockshell when including in a project
+    ports:
+      - "8100:8100"
+    container_name: dockshell
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
