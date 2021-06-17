@@ -1,7 +1,37 @@
 /* ##########################################################################*/
+.sellform{
+  display: inline-block;
+}
 
+.wrapper {
 
+  /*This part is important for centering*/
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.typing-demo {
+  width: 22ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
 @charset "UTF-8";
 .navigation {
   height: 70px;
@@ -14,6 +44,7 @@ body {
 }
 
 .brand {
+
   position: absolute;
   padding-left: 20px;
   float: left;
@@ -36,6 +67,7 @@ body {
 /* ##########################################################################*/
 nav {
   float: right;
+  z-index: 20;
 }
 nav ul {
   list-style: none;
@@ -86,9 +118,10 @@ nav ul li ul li a {
   position: absolute;
   top: 0;
   right: 0;
-  background: #DBD2D8;
+  background: #262626;
   height: 70px;
   width: 70px;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 798px) {
@@ -307,7 +340,8 @@ form input {
   background-color: white;
   width: 250px;
   border-radius: 3px;
-  padding: 10px 15px;
+  padding: 10px;
+
   margin: 0 auto 10px auto;
   display: block;
   text-align: center;
@@ -315,6 +349,7 @@ form input {
   color: black;
   transition-duration: 0.25s;
   font-weight: 300;
+  z-index: 1;
 }
 form input:hover {
   background-color:white;
@@ -356,7 +391,7 @@ select {
 
   /* styling */
   background-color: white;
-  border: thin solid blue;
+  border: thin solid black;
   border-radius: 4px;
   display: inline-block;
   font: inherit;
@@ -373,7 +408,9 @@ select {
   -moz-appearance: none;
 }
 
-
+.submit{
+  border: thin solid blue;
+}
 /* arrows */
 
 
@@ -412,6 +449,187 @@ select.round:focus {
   outline: 0;
 }
 
-.file { text-align: center; position: relative; height: 30px; width: 100px; }
-.file > input[type="file"] { position: absoulte; opacity: 0; top: 0; left: 0; right: 0; bottom: 0 }
-.file > label { position: absolute; top: 0; right: 0; left: 0; bottom: 0; background-color: white; color: black; line-height: 30px; text-align: center; cursor: pointer; border-radius: 5px;}
+
+
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+
+
+
+a.btn {
+  background: #0096a0;
+  border-radius: 4px;
+  box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  display: inline-block;
+  padding: 6px 30px 8px;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.1s 0s ease-out;
+}
+.no-touch a.btn:hover {
+  background: #00a2ad;
+  box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
+  transform: translateY(-2px);
+  transition: all 0.25s 0s ease-out;
+}
+.no-touch a.btn:active,
+a.btn:active {
+  background: #008a93;
+  box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.25);
+  transform: translate3d(0, 1px, 0);
+  transition: all 0.025s 0s ease-out;
+}
+div.cards {
+  margin: 80px auto;
+  max-width: 2000px;
+  text-align: center;
+  display: block;
+}
+
+div.card {
+  background: #ffffff;
+  display: inline-block;
+  margin: 15px;
+  max-width: 520px;
+  perspective: 1000;
+  position: relative;
+  text-align: left;
+  transition: all 0.3s 0s ease-in;
+  width: 450px;
+  z-index: 1;
+  border-radius: 50px;
+
+}
+div.card img {
+  border-radius: 5px;
+  max-width: 450px;
+  border-radius: 5px;
+}
+div.card .card__image-holder {
+  background: rgba(0, 0, 0, 0.1);
+  height: 0;
+  padding-bottom: 50%;
+}
+div.card div.card-title {
+  background: #ffffff;
+  padding: 6px 15px 10px;
+  position: relative;
+  z-index: 0;
+}
+div.card div.card-title a.toggle-info {
+  border-radius: 32px;
+  height: 32px;
+  padding: 0;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  width: 32px;
+  border-radius: 50px;
+}
+div.card div.card-title a.toggle-info span {
+  background: #ffffff;
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 16px;
+  transition: all 0.15s 0s ease-out;
+  width: 12px;
+}
+div.card div.card-title a.toggle-info span.left {
+  right: 14px;
+  transform: rotate(45deg);
+}
+div.card div.card-title a.toggle-info span.right {
+  left: 14px;
+  transform: rotate(-45deg);
+}
+div.card div.card-title h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  margin: 0;
+  padding: 0;
+}
+div.card div.card-title h2 small {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+div.card div.card-description {
+  padding: 0 15px 10px;
+  position: relative;
+  font-size: 14px;
+}
+div.card div.card-actions {
+  box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);
+  padding: 10px 15px 20px;
+  text-align: center;
+}
+div.card div.card-flap {
+  background: #d9d9d9;
+  position: absolute;
+  width: 100%;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+div.card div.flap1 {
+  transition: all 0.3s 0.3s ease-out;
+  z-index: -1;
+}
+div.card div.flap2 {
+  transition: all 0.3s 0s ease-out;
+  z-index: -2;
+}
+div.cards.showing div.card {
+  cursor: pointer;
+  opacity: 0.6;
+  transform: scale(0.88);
+}
+.no-touch div.cards.showing div.card:hover {
+  opacity: 0.94;
+  transform: scale(0.92);
+}
+div.card.show {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+div.card.show div.card-title a.toggle-info {
+  background: #ff6666 !important;
+}
+div.card.show div.card-title a.toggle-info span {
+  top: 15px;
+}
+div.card.show div.card-title a.toggle-info span.left {
+  right: 10px;
+}
+div.card.show div.card-title a.toggle-info span.right {
+  left: 10px;
+}
+div.card.show div.card-flap {
+  background: #ffffff;
+  transform: rotateX(0deg);
+}
+div.card.show div.flap1 {
+  transition: all 0.3s 0s ease-out;
+}
+div.card.show div.flap2 {
+  transition: all 0.3s 0.2s ease-out;
+}
+
+img{
+  height: 225px;
+  width: 450px;
+  border-radius: 8px;
+}
+
+.file{
+  z-index: -2;
+  display: inline-block;
+  max-width: 300px;
+}

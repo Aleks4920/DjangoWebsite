@@ -1,11 +1,46 @@
 {% extends "mainWebsite/layout.html" %} {% load static %}
 {% block body %}
 
-<h1>Buy</h1>
+<br>
+
+<div class="wrapper">
+    <div class="typing-demo">
+      Popular scripts
+    </div>
+</div>
 
 {% for post in posts%}
 
-  <h2 align="center">{{post.title}}</h1>
+<div class="cards">
+
+  <div class="card">
+    <div class="card__image-holder">
+      <img class="card__image" src="https://source.unsplash.com/450x350/?wave" alt="wave" />
+    </div>
+    <div class="card-title">
+      <a href="#" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+          {{post.title}}
+          <small>${{post.price}}</small>
+      </h2>
+      <p>{{post.author}}</p>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+        {{post.description}}
+      </div>
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="#" class="btn">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {% endfor %}
 

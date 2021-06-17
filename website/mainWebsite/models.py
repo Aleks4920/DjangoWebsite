@@ -17,9 +17,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     upload = models.FileField(upload_to='files/', null=True)
     postID = models.IntegerField(null=True)
+    picture = models.ImageField(upload_to='images', null=True)
 
-    def __str__(self):
-        return self.user.username
 
 
 class Profile(models.Model):
