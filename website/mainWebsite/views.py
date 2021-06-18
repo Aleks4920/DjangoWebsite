@@ -12,22 +12,34 @@ from django.contrib.auth.decorators import login_required
 from .models import Post
 from .models import User, Post, Profile
 
-
+#from .forms import ImageForm
 
 
 
 
 def Buy(request):
+    #form = ImageForm()
     context = {
         'posts': Post.objects.all(),
         'title': 'Buy',
+        #'form': form
     }
 
     return render(request, 'mainWebsite/buy.html',context)
 
-def Sell(request):
-    return render(request, 'mainWebsite/sell.html', {'title': 'Sell'})
 
+@login_required
+@csrf_exempt
+def Sell(request):
+    if request.method == 'POST':
+        context = {
+            'status': 201,
+            'username': request.user.username,
+
+            }
+        return JsonResponse(context, status=201)
+    else:
+        return render(request, 'mainWebsite/sell.html', {'title': 'Sell'})
 
 
 def Register(request):

@@ -13,12 +13,14 @@ class Post(models.Model):
     description = models.TextField()
     datePosted = models.DateTimeField(auto_now_add=True)
     lastEdit = models.DateTimeField(auto_now=True)
-    price = models.DecimalField(decimal_places=2, max_digits=6)
+    price = models.DecimalField(decimal_places=2, max_digits=6, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     upload = models.FileField(upload_to='files/', null=True)
     postID = models.IntegerField(null=True)
-    picture = models.ImageField(upload_to='images', null=True)
+    image = models.ImageField(upload_to='images/', null=True)
 
+    def __str__(self):
+        return self.title
 
 
 class Profile(models.Model):
