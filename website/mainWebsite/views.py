@@ -16,13 +16,11 @@ from .models import User, Post, Profile
 
 
 
-
 def Buy(request):
-    #form = ImageForm()
+
     context = {
         'posts': Post.objects.all(),
         'title': 'Buy',
-        #'form': form
     }
 
     return render(request, 'mainWebsite/buy.html',context)
@@ -32,10 +30,30 @@ def Buy(request):
 @csrf_exempt
 def Sell(request):
     if request.method == 'POST':
+        obj = Post()
+        #author
+        obj.author = request.user
+        #title
+        obj.title = request.POST.get("title")
+        #description
+        obj.description = request.POST.get('description')
+        #price
+        obj.price = request.POST.get('price')
+        #upload
+        obj.upload = request.FILES.get('upload')
+        #image
+        obj.image = request.FILES.get('image')
+        obj.save()
+
+
         context = {
             'status': 201,
+            'title': obj.title,
+            'description':obj.description,
+            'price':obj.price,
+            'postID': obj.id,
             'username': request.user.username,
-
+            'timestamp': obj.timestamp.strftime("%B %d, %Y, %I:%M %p"),
             }
         return JsonResponse(context, status=201)
     else:

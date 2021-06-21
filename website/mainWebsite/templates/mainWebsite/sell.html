@@ -8,25 +8,25 @@
 </div>
 <br>
 
-<form class="sellform" method="post" enctype="multipart/form-data">
+<form class="sellform" action="{% url 'sell' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  <input type="text" value="Title" placeholder="Title" required="required">
+  <input autofocus type="text" value="title" placeholder="Title" required="required" name="title" value="title">
   <div class="file" width="100px">
-    <label for="file-input">Script</label>
-      <input type="file" id="file-input" accept=".py,.sh,.go" required="required">
+    <label for="file-input" >Script</label>
+      <input type="file" id="file-input" accept=".py,.sh,.go" required="required" name = "upload">
   </div>
   <br>
   <div class="file" >
-    <label for="file-input">Thumnail</label>
-      <input type="file" id="file-input"  accept="image/*" required="required">
+    <label for="file-input" name="image">Thumnail</label>
+      <input type="file" id="file-input"  accept="image/*" required="required" name="image" value="image">
   </div>
   <br>
   <label for="number">Set price</label>
-  <input type="number" min="0" max="10000" step="0.01" value="Price" placeholder="Price" required="required">
+  <input type="number" min="0" max="10000" step="0.01" value="price" placeholder="Price" required="required" name="price">
   <label for="script language">Language </label>
   <div class="dropd">
-    <select class="round" required="required">
-      <option value="" disabled selected>Language</option>
+    <select class="round" required="required" name="language" value="language">
+      <option  disabled selected>Language</option>
       <option>Python</option>
       <option>Golang</option>
       <option>Bash</option>
@@ -34,9 +34,10 @@
 
   </div>
   <br>
-<input type="text" value="Description" placeholder="Description" required="required">
+<input type="textarea" value="description" placeholder="Description" required="required" name="description">
 
   <br>
+  {{ form.as_p }}
   <input type="submit" class="submit" />
 </form>
 

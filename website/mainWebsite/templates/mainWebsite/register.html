@@ -16,7 +16,7 @@
 
   <form class="form"  action="{% url 'register' %}" method="post">
     {% csrf_token %}
-    <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+    <input autofocus class="form-control" autofocus type="text" name="username" placeholder="Username">
     <input class="form-control" type="email" name="email" placeholder="Email Address">
     <input class="form-control" type="password" name="password" placeholder="Password">
     <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
