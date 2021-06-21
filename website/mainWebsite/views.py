@@ -47,15 +47,11 @@ def Sell(request):
 
 
         context = {
-            'status': 201,
-            'title': obj.title,
-            'description':obj.description,
-            'price':obj.price,
-            'postID': obj.id,
-            'username': request.user.username,
-            'timestamp': obj.timestamp.strftime("%B %d, %Y, %I:%M %p"),
-            }
-        return JsonResponse(context, status=201)
+            'posts': Post.objects.all(),
+            'title': 'Buy',
+        }
+
+        return render(request, 'mainWebsite/buy.html',context)
     else:
         return render(request, 'mainWebsite/sell.html', {'title': 'Sell'})
 
