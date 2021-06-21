@@ -487,8 +487,9 @@ a.btn:active {
 div.cards {
   margin: 80px auto;
   max-width: 2000px;
+  max-height:1000px;
   text-align: center;
-  display: block;
+  display: inline-block;
 }
 
 div.card {
