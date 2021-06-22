@@ -19,7 +19,6 @@ from .models import User, Post, Profile
 def Buy(request):
 
     if request.method == "POST":
-
         context = {
             'posts': Post.objects.all(),
             'title': 'Buy',
