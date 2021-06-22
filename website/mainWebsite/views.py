@@ -18,9 +18,21 @@ from .models import User, Post, Profile
 
 def Buy(request):
 
+    if request.method == "POST":
+
+        context = {
+            'posts': Post.objects.all(),
+            'title': 'Buy',
+            'all':'false',
+            'filter': request.POST.get('search')
+        }
+
+        return render(request, 'mainWebsite/buy.html',context)
+
     context = {
         'posts': Post.objects.all(),
         'title': 'Buy',
+        'all': 'true'
     }
 
     return render(request, 'mainWebsite/buy.html',context)

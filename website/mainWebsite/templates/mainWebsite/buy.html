@@ -10,9 +10,10 @@
 </div>
 <br>
 
-{% for post in posts %}
 
+{% if all  == 'true' %}
 <div class="cards">
+{% for post in posts %}
 
   <div class="card">
     <div class="card__image-holder" >
@@ -40,9 +41,47 @@
       </div>
     </div>
   </div>
+
+  {% endfor %}
 </div>
+{% else%}
+<div class="cards">
+{% for post in posts %}
+{%if filter in post.title%}
+  <div class="card">
+    <div class="card__image-holder" >
+      <img class="card__image" src="{{ post.image.url}}"/>
+    </div>
+    <div class="card-title">
+      <a href="#" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+          {{post.title}}
+          <small>${{post.price}}</small>
+      </h2>
+      <p>{{post.author}}</p>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+        {{post.description}}
+      </div>
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="#" class="btn">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%endif%}
+  {% endfor %}
+</div>
+{% endif %}
 
 
-{% endfor %}
+
+
+
 
 {% endblock %}

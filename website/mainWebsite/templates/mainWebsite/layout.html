@@ -29,11 +29,11 @@
 
 
     <nav>
-      <form class="container1" action="index.html" method="post" >
+      <form class="container1" action="{% url 'buy' %}" method="post" >
+      {% csrf_token %}
 
 
-
-        <input type="text" placeholder="Search..." >
+        <input type="text" placeholder="Search..." name='search' value=''>
         <div class="search"></div>
 
       </form>
