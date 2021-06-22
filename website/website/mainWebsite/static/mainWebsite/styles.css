@@ -1,5 +1,126 @@
 /* ##########################################################################*/
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+.container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: 100px;
+  .search {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background: crimson;
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    // box-shadow: 0 0 25px 0 crimson;
+    &:hover {
+      cursor: pointer;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: 22px;
+      right: 0;
+      bottom: 0;
+      left: 22px;
+      width: 12px;
+      height: 2px;
+      background: white;
+      transform: rotate(45deg);
+      transition: all .5s;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: -5px;
+      right: 0;
+      bottom: 0;
+      left: -5px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid white;
+      transition: all .5s;
+    }
+  }
+  input {
+    font-family: 'Inconsolata', monospace;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    // border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: crimson;
+    color: white;
+    text-shadow: 0 0 10px crimson;
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 25px 0 crimson,
+                0 20px 25px 0 rgba(0, 0, 0, 0.2);
+    // box-shadow: inset 0 0 25px 0 rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      width: 300px;
+      opacity: 1;
+      cursor: text;
+    }
+    &:focus ~ .search {
+      right: -250px;
+      background: #151515;
+      z-index: 6;
+      &::before {
+        top: 0;
+        left: 0;
+        width: 25px;
+      }
+      &::after {
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 2px;
+        border: none;
+        background: white;
+        border-radius: 0%;
+        transform: rotate(-45deg);
+      }
+    }
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+      font-weight: bolder;
+    }
+  }
+}
 
+.sellform{
+  display: inline-block;
+}
 
 .wrapper {
 
@@ -106,7 +227,7 @@ nav ul li ul li a {
 .nav-dropdown {
   position: absolute;
   display: none;
-  z-index: 1;
+  z-index: 20;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -383,18 +504,22 @@ form button:hover {
 .dropd {
    text-align: center;
    padding: 10px
+   z-index: 0;
+   display: block;
+   position: relative;
 }
 
 select {
 
   /* styling */
   background-color: white;
-  border: thin solid blue;
+  border: thin solid black;
   border-radius: 4px;
   display: inline-block;
   font: inherit;
   line-height: 1.5em;
   padding: 0.5em 3.5em 0.5em 1em;
+  max-width:200px;
 
   /* reset */
 
@@ -406,7 +531,9 @@ select {
   -moz-appearance: none;
 }
 
-
+.submit{
+  border: thin solid blue;
+}
 /* arrows */
 
 
@@ -483,8 +610,9 @@ a.btn:active {
 div.cards {
   margin: 80px auto;
   max-width: 2000px;
+  max-height:1000px;
   text-align: center;
-  display: block;
+  display: inline-block;
 }
 
 div.card {
@@ -501,6 +629,11 @@ div.card {
   border-radius: 50px;
 
 }
+
+img {
+  pointer-events: none;
+}
+
 div.card img {
   border-radius: 5px;
   max-width: 450px;
@@ -510,6 +643,9 @@ div.card .card__image-holder {
   background: rgba(0, 0, 0, 0.1);
   height: 0;
   padding-bottom: 50%;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 div.card div.card-title {
   background: #ffffff;
@@ -628,7 +764,4 @@ img{
   z-index: -2;
   display: inline-block;
   max-width: 300px;
-}
-label{
-  padding: 100px
 }

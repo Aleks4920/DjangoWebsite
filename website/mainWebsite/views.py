@@ -90,8 +90,27 @@ def Account(request):
     return render(request, 'mainWebsite/register.html', {'title': 'Account'})
 
 
+
 def YourScripts(request):
-    return render(request, 'mainWebsite/yourscripts.html', {'title': 'Scripts'})
+    user = request.user
+    if request.method == "POST":
+        context = {
+            'posts': Post.objects.all(),
+            'title': 'Scripts',
+            'value': request.POST.get('select')
+        }
+
+        return render(request, 'mainWebsite/yourscripts.html', context)
+
+    else:
+        context = {
+            'posts': Post.objects.all(),
+            'title': 'Scripts',
+            'value':'All'
+        }
+
+        return render(request, 'mainWebsite/yourscripts.html', context)
+
 
 def Settings(request):
     return render(request, 'mainWebsite/settings.html', {'title': 'Settings'})

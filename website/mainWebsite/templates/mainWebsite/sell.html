@@ -10,7 +10,7 @@
 
 <form class="sellform" action="{% url 'sell' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  <input autofocus type="text" value="title" placeholder="Title" required="required" name="title" value="title">
+  <input autofocus type="text"  placeholder="Title" required="required" name="title" >
   <div class="file" width="100px">
     <label for="file-input" >Script</label>
       <input type="file" id="file-input" accept=".py,.sh,.go" required="required" name = "upload">
@@ -22,7 +22,7 @@
   </div>
   <br>
   <label for="number">Set price</label>
-  <input type="number" min="0" max="10000" step="0.01" value="price" placeholder="Price" required="required" name="price">
+  <input type="number" min="0" max="10000" step="0.01"  placeholder="Price" required="required" name="price">
   <label for="script language">Language </label>
   <div class="dropd">
     <select class="round" required="required" name="language" value="language">
@@ -34,7 +34,7 @@
 
   </div>
   <br>
-<input type="textarea" value="description" placeholder="Description" required="required" name="description">
+<input type="textarea" placeholder="Description" required="required" name="description">
 
   <br>
   {{ form.as_p }}

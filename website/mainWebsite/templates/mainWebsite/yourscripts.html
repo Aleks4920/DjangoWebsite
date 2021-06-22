@@ -2,12 +2,163 @@
 {% block body %}
 
 
-<div class="dropd">
-  <select class="round">
-    <option>All</option>
-    <option>Your Scripts</option>
-    <option>Owned Scripts</option>
-    <option>Wish List</option>
-  </select>
+
+<br>
+{%if value == "All"  %}
+<form class="dropd" action="{% url 'yourscripts' %}" method="post">
+
+  {% csrf_token %}
+  <div class="dropd">
+    <select class="round" onchange="this.form.submit()" value='select' name='select'>
+      <option>All</option>
+      <option >Your Scripts</option>
+      <option >Owned Scripts</option>
+      <option '>Wish List</option>
+    </select>
+  </div>
+</form>
+<br>
+<h1>{{value}}</h1>
+
+{% for post in posts %}
+
+<div class="cards">
+
+  <div class="card">
+    <div class="card__image-holder">
+      <img class="card__image" src="{{ post.image.url}}"/>
+    </div>
+    <div class="card-title">
+      <a href="#" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+          {{post.title}}
+          <small>${{post.price}}</small>
+      </h2>
+      <p>{{post.author}}</p>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+        {{post.description}}
+      </div>
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="#" class="btn">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+{% endfor %}
+{%endif%}
+
+
+
+
+
+{%if value == "Your Scripts"  %}
+<form class="dropd" action="{% url 'yourscripts' %}" method="post">
+
+  {% csrf_token %}
+  <div class="dropd">
+    <select class="round" onchange="this.form.submit()" value='select' name='select'>
+      <option >Your Scripts</option>
+      <option>All</option>
+      <option >Owned Scripts</option>
+      <option '>Wish List</option>
+    </select>
+  </div>
+</form>
+<br>
+<h1>{{value}}</h1>
+
+{% for post in posts %}
+{%if post.author == request.user %}
+<div class="cards">
+
+  <div class="card">
+    <div class="card__image-holder">
+      <img class="card__image" src="{{ post.image.url}}"/>
+    </div>
+    <div class="card-title">
+      <a href="#" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+          {{post.title}}
+          <small>${{post.price}}</small>
+      </h2>
+      <p>{{post.author}}</p>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+        {{post.description}}
+      </div>
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="#" class="btn">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endif%}
+{% endfor %}
+{%endif%}
+
+
+
+
+
+{%if value == "Owned Scripts"  %}
+<form class="dropd" action="{% url 'yourscripts' %}" method="post">
+
+  {% csrf_token %}
+  <div class="dropd">
+    <select class="round" onchange="this.form.submit()" value='select' name='select'>
+      <option >Owned Scripts</option>
+      <option>All</option>
+      <option >Your Scripts</option>
+      <option '>Wish List</option>
+    </select>
+  </div>
+</form>
+<br>
+<h1>{{value}}</h1>
+
+<h1>TODO</h1>
+{%endif%}
+
+
+
+{%if value == "Wish List"  %}
+<form class="dropd" action="{% url 'yourscripts' %}" method="post">
+
+  {% csrf_token %}
+  <div class="dropd">
+    <select class="round" onchange="this.form.submit()" value='select' name='select'>
+      <option>Wish List</option>
+      <option>All</option>
+      <option >Your Scripts</option>
+      <option >Owned Scripts</option>
+    </select>
+  </div>
+</form>
+<br>
+<h1>{{value}}</h1>
+
+<h1>TODO</h1>
+{%endif%}
+
+
+
+
+
+
+
+
 {% endblock %}

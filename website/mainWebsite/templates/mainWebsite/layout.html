@@ -19,16 +19,28 @@
 </head>
 <body>
 
+
 <section class="navigation">
   <div class="nav-container">
     <div class="brand">
       <a href="#!">Logo</a>
+
     </div>
+
+
     <nav>
+      <form class="container1" action="index.html" method="post" >
+
+
+
+        <input type="text" placeholder="Search..." >
+        <div class="search"></div>
+
+      </form>
       <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
       <ul class="nav-list">
         <li>
-          <a href="{% url 'buy' %}">Buy</a>
+          <a href="{% url 'buy' %}" z-index="2">Buy</a>
         </li>
         {% if  user.is_authenticated %}
         <li>
