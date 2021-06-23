@@ -39,6 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # new
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+    'allauth.socialaccount.providers.github', # new
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+
+
+
+    'allauth.socialaccount.providers.vimeo',
+    'allauth.socialaccount.providers.vimeo_oauth2',
+    'allauth.socialaccount.providers.paypal',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +143,15 @@ MEDIA_URL = '/media/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+LOGIN_REDIRECT_URL = 'buy'
