@@ -6,9 +6,18 @@
 <br />
 <div class="wrapper">
     <div class="typing-demo">
-      Welcome {{user}}
+        Welcome {{user}}
     </div>
 </div>
-{% endif %}
 
+{% endif %}
+<br>
+<br>
+<div class='UserPic'>
+{%if user.profile.image%}
+<img  class='UserPic' src="{{user.profile.image.url}}" />
+{%else%}
+<img  class='UserPic' src="/media/userPics/default.png" />
+{%endif%}
+</div>
 {% endblock %}

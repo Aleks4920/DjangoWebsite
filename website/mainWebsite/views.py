@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
-
+from allauth.socialaccount.models import SocialAccount
 from .models import Post
 from .models import User, Post, Profile
 
@@ -124,7 +124,12 @@ def YourScripts(request):
 
 
 def Settings(request):
-    return render(request, 'mainWebsite/settings.html', {'title': 'Settings'})
+    
+    context= {
+
+    'title': 'Settings',
+    }
+    return render(request, 'mainWebsite/settings.html', context)
 
 
 

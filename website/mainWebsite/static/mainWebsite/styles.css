@@ -21,6 +21,10 @@
   border-right: 3px solid;
   font-family: monospace;
   font-size: 2em;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
 }
 
 @keyframes typing {
@@ -43,6 +47,10 @@
 body {
   background-color: #E4DDE2;
   text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
 }
 
 .brand {
@@ -834,6 +842,10 @@ img{
   &:focus {
     color: #4183c4;
     box-shadow: 0 0 24px 0 #4183c4
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+
   }
 }
 
@@ -847,5 +859,21 @@ img{
   &:focus {
     color: #dd4b39;
     box-shadow: 0 0 24px 0 #dd4b39
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+
   }
+}
+
+.UserPic{
+  border-radius:50%;
+  height: 150px;
+  width: 150px;
+  pointer-events: none;
+  display:inline-block;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
 }

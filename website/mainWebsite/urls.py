@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from mainWebsite import views as core_views
 urlpatterns = [
     path('', views.Buy, name="buy"),
     path("buy", views.Buy, name="buy"),
